@@ -1,0 +1,30 @@
+
+
+<div class="d-flex flex-column min-vh-100">
+    <div class="container flex-grow-1">
+        <div class="card shadow-sm p-4 mt-4">
+            <h2 class="text-center mb-3 text-warning">Edit Post</h2>
+
+            <form action="/update/<%= post.id %>" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Post Title</label>
+                    <input type="text" id="title" name="title" class="form-control" value="<%= post.title %>" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="content" class="form-label">Post Content</label>
+                    <textarea id="content" name="content" class="form-control" rows="5" required><%= post.content %></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-warning">Update Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <p>© 2025 My Blog</p>
+    </footer>
+</div>

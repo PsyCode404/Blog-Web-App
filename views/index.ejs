@@ -1,0 +1,42 @@
+ 
+
+<div class="card shadow-sm p-4">
+  <h2 class="text-center mb-3">Create a New Post</h2>
+
+  <form action="/add-post" method="POST">
+      <div class="mb-3">
+          <label for="title" class="form-label">Post Title</label>
+          <input type="text" id="title" name="title" class="form-control" placeholder="Enter post title" required>
+      </div>
+    
+      <div class="mb-3">
+          <label for="content" class="form-label">Post Content</label>
+          <textarea id="content" name="content" class="form-control" rows="4" placeholder="Write your content here..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Publish Post</button>
+  </form>
+</div>
+
+<hr class="my-5">
+
+<h2 class="text-center mb-4">Recent Posts</h2>
+
+<% if (posts.length > 0) { %>
+  <% posts.forEach(post => { %>
+      <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+              <h3 class="card-title text-primary"><%= post.title %></h3>
+              <p class="card-text"><%= post.content %></p>
+              <div class="d-flex justify-content-end">
+                  <a href="/edit/<%= post.id %>" class="btn btn-warning me-2">Edit</a>
+                  <form action="/delete/<%= post.id %>" method="POST">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  <% }) %>  
+<% } else { %>
+  <p class="text-center text-muted">No posts found.</p>
+<% } %>
